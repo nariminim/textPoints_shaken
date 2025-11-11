@@ -27,6 +27,8 @@ function setup() {
   inputBox.changed(updateText);
   inputBox.position(20, 250);
   inputBox.size(150, 30);
+
+  setShakenThreshold(10);
 }
 function updateText() {
   txt = inputBox.value();
