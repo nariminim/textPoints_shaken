@@ -99,3 +99,15 @@ function deviceShaken() {
   }
   changeTarget = !changeTarget;
 }
+
+// 권한 요청 함수 (이전 답변에서 설명된 내용)
+function activateSensors() {
+  if (typeof DeviceOrientationEvent.requestPermission === "function") {
+    // 이 부분이 사용자가 버튼을 눌렀을 때 실행되어야 합니다.
+    DeviceOrientationEvent.requestPermission().then((permissionState) => {
+      if (permissionState === "granted") {
+        // 이제 deviceShaken() 등이 제대로 작동합니다.
+      }
+    });
+  }
+}
