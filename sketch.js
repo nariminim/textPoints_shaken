@@ -2,7 +2,7 @@ let points = [];
 let x = 20;
 let fsize = 200;
 let y = fsize;
-let txt = "hello";
+let txt = "design";
 let font;
 let changeTarget = false;
 let inputBox;
@@ -24,7 +24,7 @@ function setup() {
     point["color"] = color(random(150, 255), random(100, 220), 50, 100);
   }
 
-  inputBox = createInput("design");
+  inputBox = createInput("");
   inputBox.changed(updateText);
   inputBox.position(20, 250);
   inputBox.size(150, 30);
@@ -107,8 +107,9 @@ function deviceShaken() {
 // 센서 활성화 함수 (사용자 상호작용 필요)
 function activateSensors() {
   // p5.js가 제공하는 유틸리티 함수
-  if (typeof DeviceOrientationEvent.requestPermission === "function") {
-    DeviceOrientationEvent.requestPermission()
+  // DeviceOrientationEvent : 모바일 기기의 방향 센서 접근
+  if (typeof DeviceMotionEvent.requestPermission === "function") {
+    DeviceMotionEvent.requestPermission()
       .then((permissionState) => {
         if (permissionState === "granted") {
           console.log("센서 접근 허용됨");
