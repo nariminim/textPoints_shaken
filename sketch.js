@@ -5,6 +5,7 @@ let y = fsize;
 let txt = "design";
 let font;
 let changeTarget = false;
+let mode = true;
 let inputBox;
 let activateSensor;
 let bgcolor = 255;
@@ -49,7 +50,19 @@ function updateText() {
 
 function draw() {
   background(bgcolor);
-  //text(txt, x, y); d
+  //text(txt, x, y);
+  if (changeTarget === true) {
+    for (let point of points) {
+      if (mode) {
+        point.targetPos.x = random(width);
+        point.targetPos.y = random(height);
+      } else {
+        point.targetPos.x = point.originalPos.x;
+        point.targetPos.y = point.originalPos.y;
+      }
+    }
+    changeTarget = false;
+  }
 
   beginShape();
   for (let p of points) {
@@ -67,43 +80,39 @@ function draw() {
 }
 
 function mousePressed() {
-  for (let point of points) {
-    if (changeTarget) {
-      point.targetPos.x = random(width);
-      point.targetPos.y = random(height);
-    } else {
-      point.targetPos.x = point.originalPos.x;
-      point.targetPos.y = point.originalPos.y;
-    }
-  }
-  changeTarget = !changeTarget;
+  // for (let point of points) {
+  //   if (changeTarget) {
+  //     point.targetPos.x = random(width);
+  //     point.targetPos.y = random(height);
+  //   } else {
+  //     point.targetPos.x = point.originalPos.x;
+  //     point.targetPos.y = point.originalPos.y;
+  //   }
+  // }
+  // changeTarget = !changeTarget;
+
+  bgcolor = color(random(255), random(255), random(255));
+  changeTarget = true;
+  mode = !mode;
 }
 
 function touchStarted() {
-  for (let point of points) {
-    if (changeTarget) {
-      point.targetPos.x = random(width);
-      point.targetPos.y = random(height);
-    } else {
-      point.targetPos.x = point.originalPos.x;
-      point.targetPos.y = point.originalPos.y;
-    }
-  }
-  changeTarget = !changeTarget;
+  // for (let point of points) {
+  //   if (changeTarget) {
+  //     point.targetPos.x = random(width);
+  //     point.targetPos.y = random(height);
+  //   } else {
+  //     point.targetPos.x = point.originalPos.x;
+  //     point.targetPos.y = point.originalPos.y;
+  //   }
+  // }
+  // changeTarget = !changeTarget;
 }
 
 function deviceShaken() {
   bgcolor = color(random(255), random(255), random(255));
-  for (let point of points) {
-    if (changeTarget) {
-      point.targetPos.x = random(width);
-      point.targetPos.y = random(height);
-    } else {
-      point.targetPos.x = point.originalPos.x;
-      point.targetPos.y = point.originalPos.y;
-    }
-  }
-  changeTarget = !changeTarget;
+  changeTarget = true;
+  mode = !mode;
 }
 
 // 센서 활성화 함수 (사용자 상호작용 필요)
