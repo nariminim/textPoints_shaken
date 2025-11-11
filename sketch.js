@@ -6,6 +6,7 @@ let txt = "hello";
 let font;
 let changeTarget = false;
 let inputBox;
+let activteSensor;
 
 function preload() {
   font = loadFont("asset/BebasNeue-Regular.ttf");
@@ -28,6 +29,9 @@ function setup() {
   inputBox.position(20, 250);
   inputBox.size(150, 30);
 
+  activateSensor = createButton("Activate Sensors");
+  activateSensor.position(200, 250);
+  activateSensor.mousePressed(activateSensors);
   setShakeThreshold(10);
 }
 function updateText() {
@@ -100,14 +104,20 @@ function deviceShaken() {
   changeTarget = !changeTarget;
 }
 
-// 권한 요청 함수 (이전 답변에서 설명된 내용)
+// 센서 활성화 함수 (사용자 상호작용 필요)
 function activateSensors() {
+  // p5.js가 제공하는 유틸리티 함수
   if (typeof DeviceOrientationEvent.requestPermission === "function") {
-    // 이 부분이 사용자가 버튼을 눌렀을 때 실행되어야 합니다.
-    DeviceOrientationEvent.requestPermission().then((permissionState) => {
-      if (permissionState === "granted") {
-        // 이제 deviceShaken() 등이 제대로 작동합니다.
-      }
-    });
+    DeviceOrientationEvent.requestPermission()
+      .then((permissionState) => {
+        if (permissionState === "granted") {
+          console.log("센서 접근 허용됨");
+        } else {
+          console.log("센서 접근 거부됨");
+        }
+      })
+      .catch(console.error);
   }
+  // 버튼을 숨기거나 제거하여 중복 클릭 방지
+  this.remove();
 }
