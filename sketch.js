@@ -6,7 +6,7 @@ let txt = "design";
 let font;
 let changeTarget = false;
 let inputBox;
-let activteSensor;
+let activateSensor;
 let bgcolor = 255;
 
 function preload() {
@@ -33,7 +33,7 @@ function setup() {
   activateSensor = createButton("Activate Sensors");
   activateSensor.position(200, 250);
   activateSensor.mousePressed(activateSensors);
-  setShakeThreshold(10);
+  setShakeThreshold(20);
 }
 function updateText() {
   txt = inputBox.value();
