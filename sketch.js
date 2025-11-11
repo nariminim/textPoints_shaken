@@ -7,6 +7,7 @@ let font;
 let changeTarget = false;
 let inputBox;
 let activteSensor;
+let bgcolor = 255;
 
 function preload() {
   font = loadFont("asset/BebasNeue-Regular.ttf");
@@ -41,13 +42,13 @@ function updateText() {
   for (let point of points) {
     point["targetPos"] = { x: random(width), y: random(height) };
     point["originalPos"] = { x: point.x, y: point.y };
-    point["color"] = color(random(150, 255), random(100, 200), 100);
+    point["color"] = color(random(150, 255), random(100, 220), 50, 100);
   }
   changeTarget = true;
 }
 
 function draw() {
-  background("#f8f4edff");
+  background(bgcolor);
   //text(txt, x, y); d
 
   beginShape();
@@ -92,6 +93,7 @@ function touchStarted() {
 }
 
 function deviceShaken() {
+  bgcolor = color(random(255), random(255), random(255));
   for (let point of points) {
     if (changeTarget) {
       point.targetPos.x = random(width);
