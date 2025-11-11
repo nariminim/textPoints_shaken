@@ -34,7 +34,7 @@ function setup() {
   activateSensor = createButton("Activate Sensors");
   activateSensor.position(200, 250);
   activateSensor.mousePressed(activateSensors);
-  setShakeThreshold(20);
+  setShakeThreshold(30);
 }
 function updateText() {
   txt = inputBox.value();
@@ -91,10 +91,6 @@ function mousePressed() {
   //   }
   // }
   // changeTarget = !changeTarget;
-
-  bgcolor = color(random(255), random(255), random(255));
-  changeTarget = true;
-  mode = !mode;
 }
 
 function touchStarted() {
@@ -111,7 +107,7 @@ function touchStarted() {
 }
 
 function deviceShaken() {
-  bgcolor = color(random(255), random(255), random(255));
+  //bgcolor = color(random(255), random(255), random(255));
   changeTarget = true;
 }
 
