@@ -72,15 +72,15 @@ function mousePressed() {
   changeTarget = !changeTarget;
 }
 
-function deviceShaken() {
-  for (let point of points) {
-    if (changeTarget) {
-      point.targetPos.x = random(width);
-      point.targetPos.y = random(height);
-    } else {
-      point.targetPos.x = point.originalPos.x;
-      point.targetPos.y = point.originalPos.y;
-    }
-  }
-  changeTarget = !changeTarget;
-}
+// function deviceShaken() {
+//   for (let point of points) {
+//     if (changeTarget) {
+//       point.targetPos.x = random(width);
+//       point.targetPos.y = random(height);
+//     } else {
+//       point.targetPos.x = point.originalPos.x;
+//       point.targetPos.y = point.originalPos.y;
+//     }
+//   }
+//   changeTarget = !changeTarget;
+// }
