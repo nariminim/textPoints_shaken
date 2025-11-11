@@ -23,7 +23,7 @@ function setup() {
     point["color"] = color(random(150, 255), random(100, 220), 50, 100);
   }
 
-  inputBox = createInput("hello");
+  inputBox = createInput("design");
   inputBox.changed(updateText);
   inputBox.position(20, 250);
   inputBox.size(150, 30);
