@@ -61,6 +61,7 @@ function draw() {
         point.targetPos.y = point.originalPos.y;
       }
     }
+    mode = !mode;
     changeTarget = false;
   }
 
@@ -112,7 +113,6 @@ function touchStarted() {
 function deviceShaken() {
   bgcolor = color(random(255), random(255), random(255));
   changeTarget = true;
-  mode = !mode;
 }
 
 // 센서 활성화 함수 (사용자 상호작용 필요)
